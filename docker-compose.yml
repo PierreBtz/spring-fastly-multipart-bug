@@ -1,0 +1,29 @@
+version: '2'
+services:
+  rest-server:
+    container_name: rest-server-container
+    build:
+      dockerfile: Dockerfile
+    image: spring-fastly-multipart-bug:latest
+    ports:
+      - 8080:8080
+    networks:
+      - spring-network
+    volumes:
+      - sigsci-tmp:/sigsci/tmp
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+  fastly-agent:
+    container_name: fastly-agent-container
+    image: signalsciences/sigsci-agent:4.43.0
+    environment:
+      SIGSCI_ACCESSKEYID: ${SIGSCI_ACCESSKEYID}
+      SIGSCI_SECRETACCESSKEY: ${SIGSCI_SECRETACCESSKEY}
+      SIGSCI_SERVER_HOSTNAME: "spring-fastly-multipart-bug"
+    volumes:
+      - sigsci-tmp:/sigsci/tmp
+networks:
+  spring-network:
+    driver: bridge
+volumes:
+  sigsci-tmp:
