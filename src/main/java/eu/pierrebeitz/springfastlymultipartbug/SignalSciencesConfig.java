@@ -33,7 +33,8 @@ public class SignalSciencesConfig {
         filterRegistration.setAsyncSupported(true);
         filterRegistration.setInitParameters(
                 Map.of(
-                        "rpcServerURI", "unix:/sigsci/tmp/sigsci.sock"
+                        "rpcServerURI", "unix:/sigsci/tmp/sigsci.sock",
+                        "multipartParsingEnabled", "true"
                 ));
         filterRegistration.addUrlPatterns("/*");
         filterRegistration.setOrder(1);
