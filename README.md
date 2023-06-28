@@ -24,3 +24,6 @@ SIGSCI_ACCESSKEYID="setme"
 * In another terminal run `make send-request` and observe the failure
 * To compare the behavior without the filter, run `make deploy-app-no-rasp`, you can run `make send-request` to observe
 the request completing without any issue.
+
+NOTE: the issue is currently fixed @HEAD thanks to the activation of the `multipartParsingEnabled` parameter, see
+https://github.com/PierreBtz/spring-fastly-multipart-bug/commit/8d5179ab0e31052ee8ab5b7fc41d7b25a5a20c9c
